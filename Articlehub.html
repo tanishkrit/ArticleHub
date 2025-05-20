@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SINGHAL LAW FIRM</title>
+    <link rel="icon" href="logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Basic styles for custom alert and confirm to ensure they are visible */
+        .custom-alert-box, .custom-confirm-box {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            z-index: 2000; /* Ensure it's above other content */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        .custom-alert-box {
+            bottom: 20px;
+            opacity: 0;
+            display: none; /* Initially hidden */
+        }
+        .custom-confirm-box {
+            top: 30%; /* Adjusted for better visibility */
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            gap: 0.75rem;
+            min-width: 300px;
+        }
+        .custom-confirm-box button {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            color: white; /* Ensure button text is visible */
+        }
+        .confirm-yes {
+            background-color: #28a745; /* Green */
+        }
+        .confirm-yes:hover {
+            background-color: #218838;
+        }
+        .confirm-no {
+            background-color: #dc3545; /* Red */
+        }
+        .confirm-no:hover {
+            background-color: #c82333;
+        }
+
+        @keyframes fadeInOut {
+          0% { opacity: 0; bottom: 0px; display: block; }
+          10% { opacity: 1; bottom: 20px; }
+          90% { opacity: 1; bottom: 20px; }
+          100% { opacity: 0; bottom: 0px; display: none; }
+        }
+        /* Ensure hidden class works */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidePanel" class="side-panel">
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Close side panel">☰</button>
+        <a href="#home" id="homeLink"><i class="fas fa-home"></i><span class="nav-text">Home</span></a>
+        <a href="#publish" id="publishLink"><i class="fas fa-upload"></i><span class="nav-text">Publish</span></a>
+        <a href="#browse" id="browseLink"><i class="fas fa-list-alt"></i><span class="nav-text">Browse</span></a>
+        <a href="#about" id="aboutLink"><i class="fas fa-info-circle"></i><span class="nav-text">About Us</span></a>
+        <a href="#contact" id="contactLink"><i class="fas fa-envelope"></i><span class="nav-text">Contact Us</span></a>
+    </div>
+
+    <div class="main-wrapper" id="mainWrapper">
+        <header>
+            <button type="button" id="headerMenuToggle" class="menu-toggle" aria-label="Open side panel">☰</button>
+            <div class="site-title">SINGHAL LAW FIRM</div>
+            <div class="right-section">
+                <input type="text" class="search-box" placeholder="Search" id="searchBox">
+                <a href="#" id="loginSignupLink" style="color: #ffffff; text-decoration: none;">Login / Signup</a>
+            </div>
+        </header>
+
+        <main class="container">
+            <section id="home">
+                <div class="home-banner" id="homeBanner">
+                    <div class="banner-content">
+                        <h1>Welcome to Article Hub</h1>
+                        <p>Your central place to view and publish articles from around the world.</p>
+                    </div>
+                </div>
+                <div class="top-articles-section">
+                    <h2>Top Articles</h2>
+                    <div id="topArticlesContainer" class="top-articles-row">
+                        </div>
+                </div>
+            </section>
+
+            <section id="publish" class="hidden">
+                <h2>Publish Article</h2>
+                <input type="text" id="title" placeholder="Article Title">
+                <textarea id="content" rows="5" placeholder="Write your article here..."></textarea>
+                <input type="text" id="category" placeholder="Category">
+                <input type="text" id="tags" placeholder="Tags (comma separated)">
+                <input type="file" id="attachment" multiple accept="image/*,video/*,.pdf,.doc,.docx,.txt">
+                <button id="postButton">Post</button>
+            </section>
+
+            <section id="browse" class="hidden">
+                <h2>Articles</h2>
+                <input type="text" placeholder="Search in articles" id="browseSearchBox" class="search-box">
+                <div id="articles">
+                    </div>
+            </section>
+
+            <section id="about" class="hidden">
+                <div class="about-section">
+                    <img src="https://placehold.co/150x150/007bff/ffffff?text=Platform" alt="About Us Platform Image" onerror="this.src='https://placehold.co/150x150/cccccc/000000?text=Image+Error'">
+                    <div class="about-section-content">
+                        <div>
+                            <h3>About Our Platform</h3> <p>This platform is dedicated to publishing and reading articles focused on the field of law. Here, you’ll find a wide range of content including the latest legal judgments, current legal developments, law notes, and much more. Whether you’re a student, legal professional, or simply someone interested in the legal world, this site provides valuable insights and up-to-date information to keep you informed and engaged.</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="about-section">
+                     <img src="placeholder-image.jpg" alt="Owner Image" onerror="this.src='https://placehold.co/150x150/cccccc/000000?text=Image+Error'"> <div class="about-section-content">
+                        <div>
+                            <h3>About The Owner</h3>
+                            <p>I am Adv. Prateek Singhal, the founder of this site. As a dedicated legal professional I created this platform to share valuable legal knowledge with students, professionals, and anyone interested in the field of law. My aim is to provide access to current legal judgments, informative articles, law notes, and more—making legal content accessible, relevant, and easy to understand.</p>
+                            <i class="fas fa-phone-alt"></i> <a href="tel:8826763369">8826763369</a></li>
+                            <br><i class="fas fa-envelope"></i> <a href="mailto:Adv.prateeksinghal@gmail.com">Adv.prateeksinghal@gmail.com</a></br>                  
+                          </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="about-section">
+                    <img src="me.png" alt="Developer Image" onerror="this.src='https://placehold.co/150x150/cccccc/000000?text=Image+Error'"> <div class="about-section-content">
+                        <div>
+                            <h3>About The Developer</h3>
+                            <p>Hi, I’m Tanish Gupta — a tech enthusiast and lifelong learner with a passion for innovation and problem-solving. I thrive on challenges and enjoy turning ideas into reality through coding and creative projects. Whether working on software development, exploring AI, or diving into new technologies, I’m always eager to push boundaries and grow my skills. I believe in continuous improvement, collaboration, and making an impact through meaningful work. When I’m not coding, you’ll find me exploring music, reading, or brainstorming the next big idea.</p>
+                            <p>Connect with me on <strong><a href="https://www.linkedin.com/in/tanishg07/" target="_blank"  rel="noopener noreferrer"> LinkedIn</a></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="hidden">
+                <h2>Contact Us</h2>
+                <div class="contact-container">
+                    <div class="contact-details">
+                        <h3>Get in Touch</h3>
+                        <p>If you have any questions, feel free to reach out to us. We are here to help!</p>
+                        <ul>
+                            <li><i class="fas fa-phone-alt"></i> <a href="tel:8826763369">8826763369</a></li>
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:Adv.prateeksinghal@gmail.com">Adv.prateeksinghal@gmail.com</a></li>
+                        </ul>
+                        <div class="social-media-icons">
+                            <a href="https://facebook.com/yourprofile" target="_blank" aria-label="Facebook" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/yourprofile" target="_blank" aria-label="Twitter" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/in/draftwise-legal-a85272333/" target="_blank" aria-label="LinkedIn" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form-container">
+                        <h3>Send Us a Message</h3>
+                        <form id="contactForm">
+                            <input type="text" id="contactName" name="name" placeholder="Your Name" required>
+                            <input type="email" id="contactEmail" name="email" placeholder="Your Email" required>
+                            <input type="text" id="contactSubject" name="subject" placeholder="Subject" required>
+                            <textarea id="contactMessage" name="message" rows="5" placeholder="Your Message" required></textarea>
+                            <button type="submit" class="button-style">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            </main>
+
+        <footer>
+            DRAFT WISE LEGAL<br>
+            © <span id="year"></span> SINGHAL LAW FIRM AND ASSOCIATE. All rights reserved.
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
